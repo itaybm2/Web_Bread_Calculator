@@ -206,9 +206,10 @@ class App extends React.Component {
                   <a href="https://www.freepik.com/free-vector/vintage-agriculture-elements-set-with-wheat-ears-wreathes-hay-flour-bread-pasta-windmill-combine-harvester-isolated_10055215.htm">
                     <Box align="center">
                       <CardMedia
-                        image={require("/src/3.png")}
+                        image={require("/src/Capture.JPG")}
                         style={{
-                          width: "100%"
+                          width: "100%",
+                          height: "100%"
                         }}
                         component="img"
                       ></CardMedia>
