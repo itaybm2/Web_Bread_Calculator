@@ -58,6 +58,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearAll = this.clearAll.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
     this.handleSwitch = this.handleSwitch.bind(this);
   }
 
@@ -82,6 +83,11 @@ class App extends React.Component {
     document.getElementById("result_starter").innerHTML =
       parseInt(starter) + "g";
     document.getElementById("result_salt").innerHTML = parseInt(salt) + "g";
+  }
+  handleEnter(next, event) {
+    if (event.keyCode === 13) {
+      document.getElementById(next).focus();
+    }
   }
   between(x, min, max) {
     return x >= min && x <= max;
@@ -118,7 +124,7 @@ class App extends React.Component {
     this.setState({ errors: errors });
     return formIsValid;
   }
-  handleSwitch(event) {
+  handleSwitch() {
     let labels = this.state.labels;
     labels.checked = !this.state.labels.checked;
     this.changeLabels();
@@ -206,7 +212,7 @@ class App extends React.Component {
                   <a href="https://www.freepik.com/free-vector/vintage-agriculture-elements-set-with-wheat-ears-wreathes-hay-flour-bread-pasta-windmill-combine-harvester-isolated_10055215.htm">
                     <Box align="center">
                       <CardMedia
-                        image={require("/src/3.png")}
+                        image={require("./3.png")}
                         style={{
                           width: "100%"
                         }}
@@ -263,6 +269,7 @@ class App extends React.Component {
                           ? this.state.errors.dough_weight
                           : ""
                       }
+                      onKeyDown={this.handleEnter.bind(this, "hydration")}
                       onChange={this.handleChange.bind(this, "dough_weight")}
                       placeholder={this.state.fields.dough_weight_placeholder}
                     />
@@ -277,6 +284,7 @@ class App extends React.Component {
                           : ""
                       }
                       value={this.state.fields.hydration}
+                      onKeyDown={this.handleEnter.bind(this, "starter")}
                       onChange={this.handleChange.bind(this, "hydration")}
                       placeholder="Hydration percentage"
                     />
@@ -292,6 +300,10 @@ class App extends React.Component {
                           : ""
                       }
                       value={this.state.fields.starter}
+                      onKeyDown={this.handleEnter.bind(
+                        this,
+                        "starter_hydration"
+                      )}
                       onChange={this.handleChange.bind(this, "starter")}
                     />
                     <TextField
@@ -306,6 +318,7 @@ class App extends React.Component {
                           : ""
                       }
                       value={this.state.fields.starter_hydration}
+                      onKeyDown={this.handleEnter.bind(this, "salt")}
                       onChange={this.handleChange.bind(
                         this,
                         "starter_hydration"
@@ -442,7 +455,7 @@ class App extends React.Component {
                       <Box>
                         <a href="https://www.freepik.com/free-vector/vintage-agriculture-elements-set-with-wheat-ears-wreathes-hay-flour-bread-pasta-windmill-combine-harvester-isolated_10055215.htm">
                           <CardMedia
-                            image={require("/src/4.png")}
+                            image={require("./4.png")}
                             style={{
                               width: "100%"
                             }}
