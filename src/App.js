@@ -114,10 +114,14 @@ class App extends React.Component {
         if (key === "dough_weight" && fields[key] < 0) {
           formIsValid = false;
           errors[key] = "Field must be a positive number";
-        }
-        if (key !== "dough_weight" && !this.between(fields[key], 0, 100)) {
+        } else if (
+          key !== "dough_weight" &&
+          !this.between(fields[key], 0, 100)
+        ) {
           formIsValid = false;
           errors[key] = "Field must be in range [1,100]";
+        } else {
+          errors[key] = "";
         }
       }
     }
