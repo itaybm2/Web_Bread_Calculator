@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "src/index.js",
+  "main": "src/index.html",
   "dependencies": {
     "@material-ui/core": "4.11.2",
     "mater": "0.0.0",
